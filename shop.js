@@ -65,6 +65,10 @@ calcualte.addEventListener("click", (e) => {
 
   console.log(grand_total);
   document.getElementById("grandtotal").value = sum.toFixed();
+  document.getElementById("name").value = "";
+  document.getElementById("price").value = "";
+  document.getElementById("tax").value = 11;
+  document.getElementById("Qty").value = 11;
 });
 
 function cal_total(item) {
@@ -76,7 +80,39 @@ function cal_total(item) {
   return total;
 }
 
-let display = new display();
-display.add(grand_total);
-display.clear();
-display.show(calcualte);
+//create a user-defined function to download CSV file
+function download_csv_file() {
+  //define the heading for each row of the data
+  var csv = "name,price,Qty,tax,total\n";
+
+  //merge the data with CSV
+  itemArray.forEach(function (row) {
+    csv +=
+      row.name +
+      "," +
+      row.Qty +
+      "," +
+      row.price +
+      "," +
+      row.tax +
+      "," +
+      row.itemTotal +
+      ",";
+    csv += "\n";
+  });
+
+  //display the created CSV data on the web browser
+  document.write(csv);
+
+  var hiddenElement = document.createElement("a");
+  hiddenElement.href = "data:text/csv;charset=utf-8," + encodeURI(csv);
+  hiddenElement.target = "_blank";
+
+  //provide the name for the CSV file to be downloaded
+  hiddenElement.download = "ShopBill.csv";
+  hiddenElement.click();
+}
+document.getElementById("downloadpdf").addEventListener("click", function () {
+  const element = document.getElementById("invoice");
+  pdf().form(element).save();
+});

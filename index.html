@@ -53,29 +53,32 @@
           </div>
         </div>
       </nav>
-      
+      <div class="bg-image" 
+     style="background-color: goldenrod;
+            height: 100vh">
+
 
       <div class="container my-3">
-          <h1>Billing Dashbord 1</h1>
+          <h1>Billing Dashbord</h1>
           <hr>
         <form id="libraryForm">
             <div class="row mb-3">
-              <label for="name" class="col-sm-2 col-form-label"> Product Name</label>
+              <label for="name" class="col-sm-2 col-form-label"><b> Product Name</b></label>
               <div class="col-sm-10">
                 <input type="Text" class="form-control" id="name" placeholder="ItemName">
               </div>
             </div>
             <div class="row mb-3">
-              <label for="Price" class="col-sm-2 col-form-label">Price</label>
+              <label for="Price" class="col-sm-2 col-form-label"><b>Price</b></label>
               <div class="col-sm-10">
                 <input type="number" class="form-control" id="price" placeholder="price">
               </div>
             </div>
             <div class="row mb-3">
-              <label for="tax" class="col-sm-2 col-form-label">Tax</label>
+              <label for="tax" class="col-sm-2 col-form-label"><b>Tax</b></label>
               <div class="col-sm-10">
                 <select class="form-select" aria-label="Default select example" id ="tax" >
-                  <option selected>Select Tax %</option>
+                  <option value="11" selected>Select Tax %</option>
                   <option value="0">0</option>
                   <option value="5">5</option>
                   <option value="8">8</option>
@@ -86,10 +89,10 @@
               </div>
             </div>
             <div class="row mb-3">
-                <label for="tax" class="col-sm-2 col-form-label">Qty</label>
+                <label for="tax" class="col-sm-2 col-form-label"><b><h5>Qty </h5></b></label>
                 <div class="col-sm-10">
                   <select class="form-select" aria-label="Default select example" id ="Qty" >
-                    <option selected>Select Qty</option>
+                    <option value="11" selected>Select Qty</option>
                     <option value="0">0</option>
                     <option value="1">1</option>
                     <option value="2">2</option>
@@ -140,8 +143,12 @@
               
             </div>
           </div>
-</div>
+          <br>
 
+          <button class="btn btn-primary" onclick="download_csv_file()"> Download CSV </button>
+<button class="btn btn-success" id="downloadpdf">Generate Invoice PDF</button>
+</div>
+</div>
 
     <!-- Optional JavaScript; choose one of the two! -->
 

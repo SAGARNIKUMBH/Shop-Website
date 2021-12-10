@@ -58,13 +58,17 @@ calcualte.addEventListener("click", (e) => {
   for (let i = 0; i < itemArray.length; i++) {
     // console.log(itemArray[i].itemTotal);
     sum = sum + itemArray[i].itemTotal;
+    localStorage.setItem("sum", JSON.stringify(itemArray));
+  }
+  function newFuncation() {
+    window.history.summit();
   }
 
   console.log("grandtotal", sum);
   console.log(itemArray);
 
   console.log(grand_total);
-  document.getElementById("grandtotal").value = sum.toFixed();
+  document.getElementById("grandtotal").innerText = sum.toFixed();
   document.getElementById("name").value = "";
   document.getElementById("price").value = "";
   document.getElementById("tax").value = 11;
@@ -112,7 +116,18 @@ function download_csv_file() {
   hiddenElement.download = "ShopBill.csv";
   hiddenElement.click();
 }
-document.getElementById("downloadpdf").addEventListener("click", function () {
-  const element = document.getElementById("invoice");
-  pdf().form(element).save();
-});
+
+function generatePDF() {
+  var doc = new jsPDF(); //create jsPDF object
+  doc.fromHTML(
+    document.getElementById("tabledata"), // page element which you want to print as PDF
+    15,
+    15,
+    {
+      width: 170, //set width
+    },
+    function (a) {
+      doc.save("HTML2PDF.pdf"); // save file name as HTML2PDF.pdf
+    }
+  );
+}
